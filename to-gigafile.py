@@ -51,10 +51,12 @@ except NoSuchElementException as e:
     print(t)
     print('エラー。アップロードフィールドが見つかりません。開発者に報告してください。')
     sys.exit()
-    
+
+filepath = sys.stdin.read().rstrip()
+
 try:
     #ファイルのパスをアップロードフィールドに送信
-    upload_field.send_keys(sys.argv[1])
+    upload_field.send_keys(filepath)
 except InvalidArgumentException as e:
     #エラー内容を表示
     t = e.__class__.__name__
@@ -100,7 +102,7 @@ pyperclip.copy(elem_href)
 #通知の設定
 if elem_href:
     notification.notify(
-        title = sys.argv[1] + 'のダウンロードURLをクリップボードにコピーしました。',
+        title = filepath + 'のダウンロードURLをクリップボードにコピーしました。',
         message = elem_href,
         app_name = 'File-Sharer via ギガファイル便',
         timeout = 15
