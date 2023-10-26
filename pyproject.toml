@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "to-gigafile"
+version = "0.1.0"
+description = ""
+authors = ["Luculia_pon <post28pone7@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10.5"
+selenium = "^4.13.0"
+chromedriver-binary = "117.0.5907.0.0"
+urllib3 = "^2.0.6"
+plyer = "^2.1.0"
+pyperclip = "^1.8.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
