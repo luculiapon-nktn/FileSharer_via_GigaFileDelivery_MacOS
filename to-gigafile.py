@@ -52,6 +52,7 @@ except NoSuchElementException as e:
     print('エラー。アップロードフィールドが見つかりません。開発者に報告してください。')
     sys.exit()
 
+#アップロードするためのファイルパスを変数に格納
 filepath = sys.stdin.read().rstrip()
 
 try:
