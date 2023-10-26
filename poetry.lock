@@ -182,6 +182,21 @@ files = [
 ]
 
 [[package]]
+name = "pyobjus"
+version = "1.2.4.dev0"
+description = ""
+optional = false
+python-versions = "*"
+files = []
+develop = false
+
+[package.source]
+type = "git"
+url = "http://github.com/kivy/pyobjus/"
+reference = "HEAD"
+resolved_reference = "cc90152ee5f7bdf339c7c36b09ea902a4092f0d9"
+
+[[package]]
 name = "pyperclip"
 version = "1.8.2"
 description = "A cross-platform clipboard module for Python. (Only handles plain text for now.)"
@@ -315,4 +330,4 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10.5"
-content-hash = "38a146cd4929fd843ee301d8f2b3e796f8282e4f4c42cdb29fcb866f374431d7"
+content-hash = "52ca975efe74653da9ce3752c914a42857cdd5029a15845fa626fb9b38fdb546"

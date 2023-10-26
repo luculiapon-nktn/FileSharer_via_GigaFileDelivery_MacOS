@@ -12,6 +12,7 @@ chromedriver-binary = "117.0.5907.0.0"
 urllib3 = "^2.0.6"
 plyer = "^2.1.0"
 pyperclip = "^1.8.2"
+pyobjus = {git = "http://github.com/kivy/pyobjus/"}
 
 
 [build-system]
