@@ -9,7 +9,7 @@ readme = "README.md"
 python = "^3.10.5"
 selenium = "^4.13.0"
 chromedriver-binary = "117.0.5907.0.0"
-urllib3 = "^2.0.6"
+urllib3 = "^2.0.7"
 plyer = "^2.1.0"
 pyperclip = "^1.8.2"
 pyobjus = {git = "http://github.com/kivy/pyobjus/"}
