@@ -19,7 +19,7 @@ Finderのファイルを右クリックするとクイックアクションか�
 ・(Homebrew 4.1.17 以上)  
 
 ## 環境構築のための準備
-__ここでは基本的なことしか述べていないので、わかる人は読み飛ばしても構いません。__
+__ここでは基本的なことしか述べていないので、わかる人は「環境構築」まで読み飛ばしても構いません。__
 1. Viaual Studio Codeのインストール  
    下記URLよりインストーラーをダウンロードして、インストールを実行してください。  
    https://code.visualstudio.com/download
@@ -171,8 +171,107 @@ __ここでは基本的なことしか述べていないので、わかる人は
    すると、新しく鍵マークのSSHが生成されているのがわかります。
 
 ## 環境構築
-1. git cloneする
+1. git cloneする  
    まずはFinderでFileSharerを保存するための適当なディレクトリにあたりをつけてください。  
-   Visual Studio Codeを開きましょう。ターミナル > 新しいターミナル 選択します。
-   画面下部にターミナルが出現しました。
+   ![image3](img/20231028141346.png)
+   今回、筆者は/Users/your_user_name/Documents/pythonというディレクトリを作成し、この中にFileSharer_via_GigaFileDelivery_MacOSを保存します。  
+   Visual Studio Codeを開きましょう。ターミナル > 新しいターミナル を選択します。  
+   画面下部にターミナルが出現しました。出現したターミナルにて下記コマンドを実行しましょう。
+   ```
+   cd /Users/your_user_name/Documents/python
+   ```
+   先ほどあたりをつけたディレクトリに移動することができました。
+   次に下記コマンドを実行してgit cloneしましょう。
+   ```
+   git clone git@github.com:luculiapon-nktn/FileSharer_via_GigaFileDelivery_MacOS.git
+   ```
+   完了したらFinderで確認してみます。
+   ![image4](img/20231028144418.png)
+   git cloneできたことが確認できました。
+2. パッケージをインストールする  
+   Visual Studio Codeを開きましょう。  
+   ファイル > フォルダを開く から先ほど作ったgit cloneしてきたローカルリポジトリを開きましょう。  
+   ターミナル > 新しいターミナル で下記コマンドを実行してください。  
+   ```
+   poetry shell
+   ```
+   仮想環境の中に入ることができました。また、ローカルリポジトリの中に.venvファイルが生成されていることが確認できます。
+   次にターミナルにて下記コマンドを実行して必要なパッケージをインストールします。
+   ```
+   poetry install
+   ```
+4. Plyerパッケージのコードを一部書き換える  
+   左のエクスプローラーからディレクトリの構成が見れるはずです。以下のファイルパスのnotification.pyをVisual Studio Codeで開きます。
+   ```
+   /Users/luculia/Documents/python/FileSharer_via_GigaFileDelivery_MacOS/.venv/lib/python3.10/site-packages/plyer/platforms/macosx/notification.py
+   ```
+   notification.pyのコードを全選択(command+A)して、Back Spaceで記述内容を一度削除します。  
+   notification.pyを以下のコードで上書きします。  
+   ```
+   '''
+   Module of MacOS API for plyer.notification.
+   '''
    
+   from plyer.facades import Notification
+   
+   import os
+   
+   class OSXNotification(Notification):
+       '''
+       Implementation of MacOS notification API.
+       '''
+   
+       def _notify(self, **kwargs):
+           title = kwargs.get('title', '')
+           message = kwargs.get('message', '')
+           app_name = kwargs.get('app_name', '')
+           sound_name = 'default'
+           # app_icon, timeout, ticker are not supported (yet)
+   
+           title_text = f'with title "{title}"' if title != '' else ''
+           subtitle_text = f'subtitle "{app_name}"' if app_name != '' else ''
+           soundname_text = f'sound name "{sound_name}"'
+
+           notification_text = f'display notification "{message}" {title_text} {subtitle_text} {soundname_text}'
+           os.system(f"osascript -e '{notification_text}'")
+
+   def instance():
+       '''
+       Instance for facade proxy.
+       '''
+       return OSXNotification()
+   ```
+   command+Sで上書き保存してください。
+
+## Automatorを設定する
+AutomatorとはMacOSに組み込まれている標準のアプリケーションです。これを使ってローカルリポジトリにあるPythonファイルを実行します。  
+1. Automatorを開く
+   Launchpadの画面上部にある検索バーに「Automator」と入力します。  
+   ![image5](img/20231028154216.png)  
+   Automatorを開きましょう。  
+   ウインドウ左下の新規書類を選択します。  
+   ![image6](img/20231028155610.png)  
+   「クイックアクション」を選択しましょう。
+2. Automatorの設定をする  
+   左の ライブラリ > ファイルとフォルダ > 選択されたFinder項目を取得 をダブルクリックしてアクションを配置しましょう。  
+   次に ライブラリ > ユーティリティ > シェルスクリプトを実行 をダブルクリックしてアクションを配置しましょう。  
+   ![image7](img/20231028160251.png)  
+   シェルククリプトコマンドには以下コマンドを書き込みます。
+   ```
+   cd /Users/your_user_name/Documents/python/FileSharer_via_GigaFileDelivery_MacOS/
+   /Users/your_user_name/Documents/python/FileSharer_via_GigaFileDelivery_MacOS/.venv/bin/python3 to-gigafile.py
+   ```
+   他の設定項目は上記画像を参考にしてください。  
+   command+Sで保存します。  
+   タイトルは任意でいいです。保存場所はiCloudが無難でいいでしょう。  
+
+## 実行
+任意のファイルを選択して右クリックしてください。クイックアクションの中に先ほどAutomatorで設定した項目が追加されています。  
+![image8](img/20231028163136.png)  
+これを実行するとバックグラウンドでWebブラウザにアクセスし、ギガファイル便のダウンロードURLが自動的にクリップボードにコピーされます。  
+
+## Gitの接続を切断
+最後にVisual Studio Codeのターミナルでローカルリポジトリを開き、下記コマンドを実行して、Gitとの接続を切断してください。  
+```
+rm -rf .git/
+```
