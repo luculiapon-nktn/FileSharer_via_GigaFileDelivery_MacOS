@@ -134,8 +134,8 @@ __ここでは基本的なことしか述べていないので、わかる人は
    poetry config virtualenvs.in-project true
    ```
    これで作業ディレクトリ内に.venvファイルを生成することができるようになります。
-9. GitHubアカウントの登録
-   下記URLにてGitHubアカウントを登録してください。
+9. GitHubアカウントの登録  
+   下記URLにてGitHubアカウントを登録してください。  
    https://github.co.jp
 
    このままではまだGitでの操作はできません。ターミナルにて下記コマンドを実行しましょう。
@@ -160,8 +160,12 @@ __ここでは基本的なことしか述べていないので、わかる人は
    これを全選択(command+A)してコピー(command+C)しましょう。  
 
    GitHubアカウントに戻ります。  
-   Dashboardに行くと右上にアカウントアイコンが表示されているのでクリックします。メニューが開くのでSettingsを選択します。  
    ![image1](img/20231028133604.png)
+   Dashboardに行くと右上にアカウントアイコンが表示されているのでクリックします。メニューが開くのでSettingsを選択します。  
    左のメニューバーから Access > SSH and GPG keys を選択します。  
-   __New SSH key__をクリックしましょう。  
-   ![image1](img/20231028122811)
+   __New SSH key__ をクリックしましょう。  
+   ![image2](img/20231028122811.png)
+   Titleは何でもいいです。Key typeはAuthentication keyのままで大丈夫です。  
+   Keyは先ほどコピーしたid_rsa.pub（公開鍵）の暗号のような文字列をそのままペーストします。  
+   最後に __Add SSH key__ をクリックして保存します。  
+   すると、新しく鍵マークのSSHが生成されているのがわかります。
