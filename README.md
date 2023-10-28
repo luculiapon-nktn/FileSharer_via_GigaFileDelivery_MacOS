@@ -152,15 +152,15 @@ __ここでは基本的なことしか述べていないので、わかる人は
    Enter passphrase (empty for no passphrase):
    Enter same passphrase again:
    ```
-   Finderで/Users/your_user_name/.ssh/に移動してみましょう。
+   Finderで/Users/your_user_name/.ssh/に移動してみましょう。  
    （Macでは.sshフォルダは非表示化されています。なのでFinderの 移動>フォルダに移動 でフォルダパスを指定して移動すると良いです。）  
    id_rsa（秘密鍵）とid_rsa.pub（公開鍵）が生成されていることがわかります。  
    id_rsa.pub（公開鍵）をVisual Studio Codeで開いてみましょう。  
    何かしらの暗号のような文字列が一行目に表示されているのがわかります。  
-   これを全選択(command+A)してコピー(command+C)しましょう。
+   これを全選択(command+A)してコピー(command+C)しましょう。  
 
-   GitHubアカウントに戻ります。
-   Dashboardに行くと右上にアカウントアイコンが表示されているのでクリックします。メニューが開くのでSettingsを選択します。
-   左のメニューバーから Access > SSH and GPG keys を選択します。
-   __New SSH key__をクリックしましょう。
+   GitHubアカウントに戻ります。  
+   Dashboardに行くと右上にアカウントアイコンが表示されているのでクリックします。メニューが開くのでSettingsを選択します。  
+   左のメニューバーから Access > SSH and GPG keys を選択します。  
+   __New SSH key__をクリックしましょう。  
    ![image1](img/20231028122811)
