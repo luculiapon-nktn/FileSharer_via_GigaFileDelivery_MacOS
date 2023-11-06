@@ -145,14 +145,15 @@ __ここでは基本的なことしか述べていないので、わかる人は
    ```
    ssh-keygen -t rsa
    ```
-   すると、下記のような３つの質問をされます。何も入力せずに３回Return(Enter)キーを押しましょう。
+   すると、下記のような３つの質問をされます。何も入力せずに３回Return(Enter)キーを押しましょう。  
+   （your_user_nameのところはご自身のPCの名前で表記されるはずです。）
    ```
    Generating public/private rsa key pair.
    Enter file in which tosave the key (/Users/your_user_name/.ssh/id_rsa):
    Enter passphrase (empty for no passphrase):
    Enter same passphrase again:
    ```
-   Finderで/Users/your_user_name/.ssh/に移動してみましょう。  
+   Finderで/Users/your_user_name/.ssh/に移動してみましょう。（your_user_nameのところはあなたのPCの名前に置き換えてください。）  
    （Macでは.sshフォルダは非表示化されています。なのでFinderの 移動>フォルダに移動 でフォルダパスを指定して移動すると良いです。）  
    id_rsa（秘密鍵）とid_rsa.pub（公開鍵）が生成されていることがわかります。  
    id_rsa.pub（公開鍵）をVisual Studio Codeで開いてみましょう。  
@@ -174,9 +175,10 @@ __ここでは基本的なことしか述べていないので、わかる人は
 1. git cloneする  
    まずはFinderでFileSharerを保存するための適当なディレクトリにあたりをつけてください。  
    ![image3](img/20231028141346.png)
-   今回、筆者は/Users/your_user_name/Documents/pythonというディレクトリを作成し、この中にFileSharer_via_GigaFileDelivery_MacOSを保存します。  
+   今回、筆者は/Users/your_user_name/Documents/pythonというディレクトリを作成し、この中にFileSharer_via_GigaFileDelivery_MacOSを保存します。
+   （your_user_nameのところはあなたのPCの名前に置き換えてください。）  
    Visual Studio Codeを開きましょう。ターミナル > 新しいターミナル を選択します。  
-   画面下部にターミナルが出現しました。出現したターミナルにて下記コマンドを実行しましょう。
+   画面下部にターミナルが出現しました。出現したターミナルにて下記コマンドを実行しましょう。（上記と同様にyour_user_nameはあなたのPCの名前に置き換えてください。）
    ```
    cd /Users/your_user_name/Documents/python
    ```
@@ -188,7 +190,7 @@ __ここでは基本的なことしか述べていないので、わかる人は
    完了したらFinderで確認してみます。
    ![image4](img/20231028144418.png)
    git cloneできたことが確認できました。
-2. パッケージをインストールする  
+3. パッケージをインストールする  
    Visual Studio Codeを開きましょう。  
    ファイル > フォルダを開く から先ほど作ったgit cloneしてきたローカルリポジトリを開きましょう。  
    ターミナル > 新しいターミナル で下記コマンドを実行してください。  
@@ -257,6 +259,7 @@ AutomatorとはMacOSに組み込まれている標準のアプリケーション
    次に ライブラリ > ユーティリティ > シェルスクリプトを実行 をダブルクリックしてアクションを配置しましょう。  
    ![image7](img/20231028160251.png)  
    シェルククリプトコマンドには以下コマンドを書き込みます。
+   （your_user_nameのところはあなたのPCの名前に置き換えてください。）
    ```
    cd /Users/your_user_name/Documents/python/FileSharer_via_GigaFileDelivery_MacOS/
    /Users/your_user_name/Documents/python/FileSharer_via_GigaFileDelivery_MacOS/.venv/bin/python3 to-gigafile.py
